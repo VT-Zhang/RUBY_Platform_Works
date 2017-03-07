@@ -34,7 +34,15 @@ class User
   def say_hello
     puts "Hello!"
   end
+
+  def self.foo
+    puts "This is a class method"
+  end
+
 end
 u = User.new("John", "Doe")
 u.full_name # => "I am John Doe"
 u.say_hello # => "Hello!"
+
+y = User.new("Jane", "Doe")
+User.foo
