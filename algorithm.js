@@ -115,9 +115,11 @@ unique4(Mynum);
 function unique5(arr){
   var newarr = [];
   for(var i = 0; i<arr.length; i++) {
-    for(var j = i + 1; j < arr.length; j++)
-      if (arr[i] === arr[j]){
-         j = ++i;
+    for(var j = i+1; j < arr.length; j++)
+      if (arr[i] == arr[j]){
+         i++;
+         j = i;
+         console.log("this is j :" + j);
       }
     newarr[newarr.length] = arr[i];
   }
@@ -125,5 +127,8 @@ function unique5(arr){
   return newarr;
 }
 
-var Mynum = [1, 2, 2, 4, 5, 4, 7, 8, 7, 3, 6];
+var Mynum = [1, 2, 2, 2, 4, 5, 4, 7, 8, 7, 3, 6];
 unique5(Mynum);
+
+
+var a = ++2;

@@ -15,7 +15,7 @@ class PersonsController < ApplicationController
   end
 
   def show
-      @persons = Person.find_by_id(:id)
+      @persons = Person.find_by_id(params[:id])
       render json: @persons
   end
 
