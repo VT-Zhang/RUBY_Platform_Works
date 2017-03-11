@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>New Dojo</title>
+        <style>
+            .error{
+                color:red;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Creating New Dojo</h1>
+        <form action="/dojos", method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                <p>Branch: <input type="text" name="branch" /></p>
+                <p>Street: <input type="text" name="street" /></p>
+                <p>City: <input type="text" name="city" /></p>
+                <p>State: <input type="text" name="state" /></p>
+                <p><input type="submit" value="Create New Dojo" /></p>
+        </form>
+        <a href="/dojos">Go Back</a>
+
+        <% if flash[:errors] !=nil %>
+        <% flash[:errors].each do |error| %>
+        <p class="error">
+            <%= error %>
+        </p>
+        <% end %>
+        <% end %>
+
+    </body>
+</html>
