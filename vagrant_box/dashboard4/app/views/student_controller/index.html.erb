@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td,
+            th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+            .error{
+                color: green;
+            }
+
+        </style>
+    </head>
+    <body>
+
+        <h1><%= @dojo.branch%> Dojo</h1> <a href="/dojos/<%= @dojo.id %>/edit">Edit</a>
+        <h3>Address: <%= @dojo.street%></h3>
+        <h3>City: <%= @dojo.city%>, State: <%= @dojo.state%></h3>
+        <br />
+        <h2>Student Roster</h2>
+        <table>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+            <% @students.each do |student| %>
+            <tr>
+                <td><%= student.first_name %></td>
+                <td><%= student.last_name %></td>
+                <td><%= student.email %></td>
+                <td><a href="/dojos/<%= @dojo.id %>/students/<%= student.id %>">Show</a> | <a href="/dojos/<%= @dojo.id %>/students/<%= student.id %>/edit">Edit</a> |
+                    <form action="/dojos/<%= @dojo.id %>/students/<%= student.id %>" method="post">
+                        <input type="hidden" name="_method" value="delete" />
+                        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                        <input type="submit" value="Delete" />
+                    </form>
+
+                </form></td>
+            </tr>
+            <% end %>
+        </table>
+        <br />
+        <a href="/dojos/<%= @dojo.id %>/students/new">Add New Student</a> | <a href="/dojos">Back to Dojo</a>
+
+        <% if flash[:errors] != nil %>
+        <% flash[:errors].each do |error|%>
+        <p class="error"><%= error %></p>
+        <% end %>
+        <% end %>
+    </html>

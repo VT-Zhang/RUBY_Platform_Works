@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Show Student</title>
+    </head>
+    <style>
+            table {
+                font-family: arial, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            td,
+            th {
+                border: 1px solid #dddddd;
+                text-align: left;
+                padding: 8px;
+            }
+            tr:nth-child(even) {
+                background-color: #dddddd;
+            }
+            .error{
+                color: green;
+            }
+
+        </style>
+    <body>
+        <h1><%= @dojo.branch %> Dojo's <%= @student.first_name %> <%= @student.last_name %></h1>
+        <h3>Email: <%= @student.email %></h3>
+        <h3>Cohort</h3>
+        <table>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+            <tr>
+                <td><%= @student.first_name %></td>
+                <td><%= @student.last_name %></td>
+                <td><%= @student.email %></td>
+            </tr>
+        </table>
+        <p><a href="/dojos/<%= @dojo.id %>/students/">Home</a> | <a href="/dojos/<%= @dojo.id %>/students/<%= @student.id %>/edit">Edit</a></p>
+
+    </body>
+</html>
