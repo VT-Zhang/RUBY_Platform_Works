@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>The Wall - Message Index</title>
+    </head>
+    <body>
+        <div>
+            <p>
+                Welcome, <%= @user.username %>
+            </p>
+            <p>
+                Post a Message
+            </p>
+            <form action="/message" method="post">
+                <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                <textarea rows="4" cols="50" name="message">
+                Post your text here.
+                </textarea>
+                <input type="submit" value="Post a Message" />
+            </form>
+        </div>
+    </body>
+</html>
