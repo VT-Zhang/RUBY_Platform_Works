@@ -2,6 +2,9 @@ Rails.application.routes.draw do
 
     resources :users
     resources :messages
+    get "dashboard" => "messages_controller#dashboard"
+    get "post_message" => "messages_controller#post_message"
+    get "log_out" => "users_controller#log_out"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

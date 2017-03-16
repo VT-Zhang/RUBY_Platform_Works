@@ -7,11 +7,23 @@
     <body>
         <div>
             <p>
-                Welcome, <%= @user.username %>
+                Welcome, <%= session[:c_user][0]['username'] %>
             </p>
-            <p>
-                Post a Message
-            </p>
+
+            <a href="Log_Out" value="Log Out">Log Out</a>
+
+            <div class="error">
+                <% if flash[:errors] !=nil %>
+                <% flash[:errors].each do |error| %>
+                <p class="error">
+                    <%= error %>
+                </p>
+                <% end %>
+                <% end %>
+            </div>
+
+            <p>Post a Message</p>
+
             <form action="/message" method="post">
                 <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
                 <textarea rows="4" cols="50" name="message">
@@ -19,6 +31,15 @@
                 </textarea>
                 <input type="submit" value="Post a Message" />
             </form>
+            <div id="messages">
+              <% @messages.each do |message| %>
+              <div class="message">
+                <h3><%= message.user.username %> - <%= message.created_at %></h3>
+                <p><%= message.message %></p>
+              </div>
+              <% end %>
+            </div>
+
         </div>
     </body>
 </html>

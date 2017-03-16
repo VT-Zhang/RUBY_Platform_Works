@@ -4,7 +4,7 @@ feature "Register a new user" do
         visit new_user_path
     end
     scenario "User created succcefully" do
-        fill_in "user_username", with: "Jordan"
+        fill_in "username", with: "Jordan"
         click_button "Sign In"
         expect(page).to have_current_path("/messages")
         expect(page).to have_content "Welcome, Jordan"
