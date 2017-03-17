@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       if @user.valid?
           @user.save
           session[:name] = @user.name
-          redirect_to "users"
+          redirect_to "/users"
       else
           flash[:errors] = @user.errors.full_messages
           redirect_to "/users/" + (@user.id).to_s + "/edit"

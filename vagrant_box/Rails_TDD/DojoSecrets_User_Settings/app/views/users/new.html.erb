@@ -6,7 +6,7 @@
     </head>
     <body>
         <h1>Create New Users</h1>
-        <form action="users/create" method="post">
+        <form action="/users/create" method="post">
             <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
             <p>Name: <input type="text" name="name" /></p>
             <p>Email: <input type="text" name="email" /></p>

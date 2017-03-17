@@ -5,7 +5,7 @@
         <title>Edit User Profile</title>
     </head>
     <body>
-        <form action="users/<%= session[:user_id] %>" method="post">
+        <form action="/users/<%= session[:user_id] %>" method="post">
             <input type="hidden" name="_method" value="patch" />
             <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
             <p>Name: <input type="text" name="name" value="<%= session[:name] %>"</p>
@@ -14,7 +14,7 @@
             <p>PW Confirmation: <input type="text" name="password_confirmation"</p>
             <p><input type="submit" value="Update" /></p>
         </form>
-        <form action="users/<%=session[:user_id]%>" method="post">
+        <form action="/users/<%=session[:user_id]%>" method="post">
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
           <input type="hidden" name="_method" value="delete">
           <input type="submit" value="Delete Account">

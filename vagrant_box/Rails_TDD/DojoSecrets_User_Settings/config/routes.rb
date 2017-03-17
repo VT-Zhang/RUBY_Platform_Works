@@ -1,17 +1,16 @@
 Rails.application.routes.draw do
 
-  get 'sessions/new' => "sessions#new"
-  post 'sessions/create' => "sessions#create"
-  delete 'sessions/:id' => "sessions#destroy"
+  get '/sessions/new' => "sessions#new"
+  post '/sessions/create' => "sessions#create"
+  delete '/sessions/:id' => "sessions#destroy"
 
-  get 'users' => "users#index"
-  get 'users/new' => "users#new"
-  post 'users/users/create' => "users#create"
-  get 'users/:id' => "users#show"
-  get ':id/edit' => "users#edit"
-  get 'users/:id/edit' => "users#edit"
-  patch 'users/:id/users/:id' => "users#update"
-  delete "users/:id/users/:id" =>"users#destroy"
+  get '/users' => "users#index"
+  get '/users/new' => "users#new"
+  post '/users/create' => "users#create"
+  get '/users/:id' => "users#show"
+  get '/users/:id/edit' => "users#edit"
+  patch '/users/:id' => "users#update"
+  delete "/users/:id" =>"users#destroy"
 
 
 
