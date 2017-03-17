@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
 
-  get 'sessions/new' => "sessions_controller#new"
+  get 'sessions/new' => "sessions#new"
 
-  post 'sessions/create' => "sessions_controller#create"
+  post 'sessions/create' => "sessions#create"
 
-  get 'users/new' => "users_controller#new"
+  post 'sessions/new' => "sessions#destroy"
 
-  get 'users/:id' => "users_controller#show"
+  get 'users/new' => "users#new"
 
-  get 'users/:id/edit' => "users_controller#edit"
+  get 'users/:id' => "users#show"
+
+  get 'users/:id/edit' => "users#edit"
 
 
 

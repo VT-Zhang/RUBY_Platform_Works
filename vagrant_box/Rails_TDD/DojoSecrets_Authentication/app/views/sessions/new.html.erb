@@ -8,9 +8,14 @@
         <h1>User Sign In</h1>
         <form action="/sessions/create" method="post">
             <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
-            Email: <input type="text" name="Email" />
-            Password: <input type="text" name="Password" />
-            <input type="submit" value="Sign In" />
+            Email: <input type="text" name="email" />
+            Password: <input type="text" name="password" />
+            <input type="submit" value="Log In" />
         </form>
+        <div class="error">
+            <% if flash[:m] != nil %>
+            <%= flash[:m]%>
+            <% end %>
+        </div>
     </body>
 </html>

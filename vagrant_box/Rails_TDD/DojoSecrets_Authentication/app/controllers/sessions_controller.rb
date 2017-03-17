@@ -1,31 +1,23 @@
 class SessionsController < ApplicationController
-    def new
 
+    def new
     end
 
     def create
-        # Log User In
-        user = User.find_by(email: params[:Email])
-        if user.authenticate(params[:Password]) == true
-            session[:user_id] = user.id
-            redirect_to "/users/#{user.id}"
-        # if authenticate true
-            # save user id to session
-            # redirect to users profile page
-        else
-            flash[:errors] = new_message.errors.full_messages
+        user = User.find_by(email: params[:email])
+        if  User.find_by(email: params[:email]).try(:authenticate, params[:password]) == false
+            flash[:m] = "Invalid combination"
             redirect_to "/sessions/new"
-        # if authenticate false
-            # add an error message -> flash[:errors] = ["Invalid"]
-            # redirect to login page
+        else
+            session[:user_id] = user.id
+            session[:name] = user.name
+            redirect_to "/users/"+(user.id).to_s
         end
     end
 
     def destroy
         session[:user_id] = null
+        session[:name] = null
         redirect_to "/sessions/new"
-        # Log User out
-        # set session[:user_id] to null
-        # redirect to login page
     end
 end

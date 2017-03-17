@@ -1,2 +1,11 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>User Show Page</title>
+    </head>
+    <body>
+        <h1>Welcome, <%= session[:name] %></h1>
+        <a href="/sessions/new">Log Out</a>
+    </body>
+</html>
