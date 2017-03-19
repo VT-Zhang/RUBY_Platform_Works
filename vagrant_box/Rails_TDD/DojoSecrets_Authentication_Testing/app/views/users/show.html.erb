@@ -1,0 +1,17 @@
+<h1>These are all the secrets for "<%= session[:name] %>"</h1>
+<% @secrets.each do |secret| %>
+  <% if current_user == secret.user %>
+    <p><%= secret.content %>
+    <form action="/secrets/<%= secret.id %>" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete Secret">
+  </form></p><hr />
+  <% end %>
+<% end %>
+
+<form action="/secrets/create" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    My new secret: <input type="text" name="content" value="write your secret here..."/>
+    <input type="submit" value="Create Secret" />
+</form>
