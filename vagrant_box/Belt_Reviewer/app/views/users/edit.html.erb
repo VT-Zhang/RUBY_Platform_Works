@@ -1,0 +1,23 @@
+<div id="top">
+    <a href="/events" data-method="get">Events Dashboard</a> |
+    <a href="/sessions" data-method="delete">Logout</a>
+</div>
+
+<h2>Edit Your Profile</h2>
+<form action="/users/<%=session[:user_id]%>/update" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="patch" />
+    <p>First Name: <input type="text" name="first_name" value="<%= @user.first_name %>"></p>
+    <p>Last Name: <input type="text" name="last_name" value="<%= @user.last_name %>"></p>
+    <p>Email: <input type="text" name="email" value="<%= @user.email %>"></p>
+    <p>Location: <input type="text" name="location" value="<%= @user.location %>">
+    <select name="state" value="<%= @user.state %>">
+        <option value="AZ">AZ</option>
+        <option value="CA">CA</option>
+        <option value="DC">DC</option>
+        <option value="IL">IL</option>
+        <option value="NY">NY</option>
+        <option value="VA">VA</option>
+    </select></p>
+    <input type="submit" value="Update Records" />
+</form>

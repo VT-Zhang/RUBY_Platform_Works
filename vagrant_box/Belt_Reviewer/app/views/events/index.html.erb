@@ -1,0 +1,75 @@
+<style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 15px;
+}
+</style>
+
+<div id="top">
+    <h3>Welcome, <%= session[:name] %>!</h3>
+    <a href="/users/<%=session[:user_id]%>/edit" data-method="get">Edit My Profile</a> |
+    <a href="/sessions" data-method="delete">Logout</a>
+</div>
+
+<h3>Here are some of the events at your state: </h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Location</th>
+    <th>Host</th>
+    <th>Action/Status</th>
+  </tr>
+  <% @event_same_state.each do |event| %>
+  <tr>
+      <th><%= event.name %></th>
+      <th><%= event.date %></th>
+      <th><%= event.location %></th>
+      <th><%= event.user.first_name %></th>
+      <th>Action/Status</th>
+  </tr>
+  <% end %>
+</table>
+<br/>
+
+<h3>Here are some of the events on other state: </h3>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Date</th>
+    <th>Location</th>
+    <th>Host</th>
+    <th>Action/Status</th>
+  </tr>
+  <% @event_rest.each do |event| %>
+  <tr>
+      <th><%= event.name %></th>
+      <th><%= event.date %></th>
+      <th><%= event.location %></th>
+      <th><%= event.state %></th>
+      <th><%= event.user.first_name %></th>
+      <th>Action/Status</th>
+  </tr>
+  <% end %>
+</table>
+<br />
+
+<h2>Add Event</h2>
+<form action="/events/create" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <p>Name: <input type="text" name="name" /></p>
+    <p>Date: <input type="date" name="date" /></p>
+    <p>Location: <input type="text" name="location" />
+    <select name="state">
+        <option value="AZ">AZ</option>
+        <option value="CA">CA</option>
+        <option value="DC">DC</option>
+        <option value="IL">IL</option>
+        <option value="NY">NY</option>
+        <option value="VA">VA</option>
+    </select></p>
+    <input type="submit" value="Add Event" />
+</form>

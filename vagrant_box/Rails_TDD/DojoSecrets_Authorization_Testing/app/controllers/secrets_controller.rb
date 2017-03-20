@@ -9,7 +9,6 @@ class SecretsController < ApplicationController
       @secret = Secret.new(content: params[:content], user: User.find(session[:user_id]))
       if @secret.valid?
           @secret.save
-        #   flash[:errors] = ["You just added a new secret...."]
           redirect_to "/users/"+(session[:user_id]).to_s
       else
           flash[:errors] = @secret.errors.full_messages
