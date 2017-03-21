@@ -9,49 +9,56 @@ th, td {
 </style>
 
 <div id="top">
-    <h3>Welcome, <%= session[:name] %>!</h3>
+    <h2>Welcome, <%= session[:name] %>!</h2>
     <a href="/users/<%=session[:user_id]%>/edit" data-method="get">Edit My Profile</a> |
     <a href="/sessions" data-method="delete">Logout</a>
 </div>
 
-<h3>Here are some of the events at your state: </h3>
+<h3>Here are some of the events at YOUR state: </h3>
 <table>
   <tr>
     <th>Name</th>
     <th>Date</th>
     <th>Location</th>
+    <th>State</th>
     <th>Host</th>
     <th>Action/Status</th>
   </tr>
   <% @event_same_state.each do |event| %>
   <tr>
-      <th><%= event.name %></th>
-      <th><%= event.date %></th>
-      <th><%= event.location %></th>
-      <th><%= event.user.first_name %></th>
-      <th>Action/Status</th>
+      <td><a href="/events/<%=event.id%>/show" data-method="get"><%= event.name %></a></th>
+      <td><%= event.date %></th>
+      <td><%= event.location %></th>
+      <td><%= event.state %></th>
+      <td><%= event.user.first_name %></th>
+      <td><% if @user == event.user %> <a href="/events/<%=event.id%>/edit" data-method="get">Edit</a> | <a href="/events/<%=event.id%>" data-method="delete">Delete</a><% end %>
+          <% unless @user.events_participated.exists?(event.id) && session[:user_id] != event.user_id %> <a href="/events/<%=event.id%>/participation" data-method="post">Join</a>
+          <% else %>Joining <a href="/events/<%=event.id%>/participation" data-method="delete">Cancel</a> <% end %></th>
   </tr>
   <% end %>
 </table>
 <br/>
 
-<h3>Here are some of the events on other state: </h3>
+<h3>Here are some of the events on OTHER state: </h3>
 <table>
   <tr>
     <th>Name</th>
     <th>Date</th>
     <th>Location</th>
+    <th>State</th>
     <th>Host</th>
     <th>Action/Status</th>
   </tr>
   <% @event_rest.each do |event| %>
   <tr>
-      <th><%= event.name %></th>
+      <th><a href="/events/<%=event.id%>/show" data-method="get"><%= event.name %></a></th>
       <th><%= event.date %></th>
       <th><%= event.location %></th>
       <th><%= event.state %></th>
       <th><%= event.user.first_name %></th>
-      <th>Action/Status</th>
+      <th><% if @user == event.user %> <a href="/events/<%=event.id%>/edit" data-method="get">Edit</a> | <a href="/events/<%=event.id%>" data-method="delete">Delete</a><% end %>
+          <% unless @user.events_participated.exists?(event.id) && @user != event.user %> <a href="/events/<%=event.id%>/participation" data-method="post">Join</a>
+          <% else %>Joining <a href="/events/<%=event.id%>/participation" data-method="delete">Cancel</a> <% end %></th>
   </tr>
   <% end %>
 </table>

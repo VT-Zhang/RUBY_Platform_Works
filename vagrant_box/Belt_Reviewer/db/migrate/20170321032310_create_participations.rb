@@ -1,6 +1,6 @@
-class CreatePaticipations < ActiveRecord::Migration
+class CreateParticipations < ActiveRecord::Migration
   def change
-    create_table :paticipations do |t|
+    create_table :participations do |t|
       t.references :user, index: true, foreign_key: true
       t.references :event, index: true, foreign_key: true
 

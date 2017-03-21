@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
 
   def date_only_in_the_future
     if date < Date.today
-      errors.add(:date, "Date must be in the future.")
+      errors.add(:date, "must be in the future.")
     end
   end
 
