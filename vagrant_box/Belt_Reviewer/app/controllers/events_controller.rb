@@ -12,7 +12,7 @@ class EventsController < ApplicationController
           flash[:notices] = ["You have successfully added an event!"]
           redirect_to "/events"
       else
-          flash[:error] = event.errors.full_messages
+          flash[:errors] = event.errors.full_messages
           redirect_to "/events"
       end
   end
@@ -45,5 +45,6 @@ class EventsController < ApplicationController
   def show
       @event = Event.find(params[:id])
       @participations = Participation.where(event_id: params[:id])
+      @comments = Comment.where(event_id: params[:id])
   end
 end

@@ -3,9 +3,11 @@ class User < ActiveRecord::Base
   has_many :events
   has_many :participations, dependent: :destroy
   has_many :events_participated, through: :participations, source: :event
+  has_many :comments, dependent: :destroy
+  has_many :events_commented, through: :comments, source: :event
 
   EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]+)\z/i
-  validates :first_name, :last_name, :email, :location, :state, :password, :password_confirmation, presence:true
+  validates :first_name, :last_name, :email, :location, :state, presence:true
   validates :email, format: { with: EMAIL_REGEX }, uniqueness: true
-  validates :password, :password_confirmation, length: { minimum: 8 }
+  before_create :password, :password_confirmation, length: {minimum: 8}, presence:true
 end

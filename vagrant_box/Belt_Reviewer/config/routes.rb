@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'comments/create'
+
   get "/" => "users#index"
   post "/users/create" => "users#create"
   get "/users/:id/edit" => "users#edit"
@@ -17,6 +19,10 @@ Rails.application.routes.draw do
 
   post "/events/:id/participation" => "participations#create"
   delete "/events/:id/participation" => "participations#destroy"
+
+  post "/events/:id/comment" => "comments#create"
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

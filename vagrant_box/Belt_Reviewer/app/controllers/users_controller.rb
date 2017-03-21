@@ -20,16 +20,8 @@ class UsersController < ApplicationController
 
   def update
       user = current_user
-    #   user.update(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], location: params[:location], state: params[:state])
-      user.first_name = params[:first_name]
-      user.last_name = params[:last_name]
-      user.email = params[:email]
-      user.location = params[:location]
-      user.state = params[:state]
-      user.password = current_user.password_digest
-      user.password_confirmation = current_user.password_digest
+      user.update(first_name: params[:first_name], last_name: params[:last_name], email: params[:email], location: params[:location], state: params[:state])
       if user.valid?
-          user.save
           session[:name] = user.first_name
           flash[:notices] = ["You have successfully UPDATED your profile!"]
           redirect_to "/events"
