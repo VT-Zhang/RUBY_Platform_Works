@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DojoSecrets</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <style>
+     .red{
+         color:red;
+     }
+     .green{
+         color:green;
+     }
+     #wrapper{
+         margin-left: auto;
+         margin-right: auto;
+         width: 500px;
+     }
+     #logout{
+         display: flex;
+         text-align: right;
+         width:500px;
+         margin-left: 455px;
+     }
+  </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="logout">
+            <% if session[:user_id] != nil %>
+                <form action="/sessions/destroy" method="post">
+                    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+                    <input type="hidden" name="_method" value="delete" />
+                    <input type="submit" value="Logout" />
+                </form>
+            <% end %>
+        </div>
+        <% if flash[:errors] %>
+            <% flash[:errors].each do |e| %>
+                <p class="red"><%= e %></p>
+            <% end %>
+        <% end %>
+        <% if flash[:notices] %>
+            <% flash[:notices].each do |n| %>
+                <p class="green"><%= n %></p>
+            <% end %>
+        <% end %>
+
+    <%= yield %>
+    </div>
+</body>
+</html>

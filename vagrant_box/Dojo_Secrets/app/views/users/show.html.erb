@@ -1,0 +1,18 @@
+<h2>Welcome, <%= current_user.name %>.</h2>
+<h3>Go to <a href="/secrets">Secrets Town Square</a> to see other people's secrets.</h3>
+<h3>What's your Secret?</h3>
+<form action="/secrets/create" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <p><textarea name="secret" rows="6" cols="50">Write your secret here...</textarea></p>
+    <p><input type="submit" value="Create Secret" /></p>
+</form>
+<br />
+<h3>My Own Secrets</h3>
+<% @secrets_own.each do |own| %>
+<p><%= own.secret %> | <i><%= own.likes.count %> likes</i> | <a href="/secrets/<%= own.id %>" data-method="delete">Delete</a></p>
+<% end %>
+<br />
+<h3>Secrets Liked</h3>
+<% @secrets_liked.each do |liked| %>
+<p><%= liked.secret.secret %> | <i><%= liked.secret.likes.count %> likes</i></p>
+<% end %>
