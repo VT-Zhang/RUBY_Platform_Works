@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'comments/create'
-
   get "/" => "users#index"
   post "/users/create" => "users#create"
   get "/users/:id/edit" => "users#edit"

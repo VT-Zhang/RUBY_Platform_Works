@@ -39,9 +39,6 @@ class EventsController < ApplicationController
       end
   end
 
-  def new
-  end
-
   def show
       @event = Event.find(params[:id])
       @participations = Participation.where(event_id: params[:id])
