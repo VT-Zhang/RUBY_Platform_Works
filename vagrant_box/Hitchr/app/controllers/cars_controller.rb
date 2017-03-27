@@ -4,7 +4,7 @@ class CarsController < ApplicationController
       if car.valid?
           car.save
           flash[:notices] = ["You have successfully added a new car!"]
-          redirect_to "/drivers/#{current_driver.id}"
+          redirect_to "/drivers/#{current_driver.id}/index"
       else
           flash[:errors] = car.errors.full_messages
           redirect_to "/cars/new"

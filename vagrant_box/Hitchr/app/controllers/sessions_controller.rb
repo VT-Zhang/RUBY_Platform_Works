@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
               redirect_to "/sessions/new"
           else
               session[:user_id] = user.id
-              redirect_to "/drivers/#{user.id}"
+              redirect_to "/drivers/#{user.id}/index"
           end
 
       elsif user = Rider.find_by(email: params[:email])
@@ -24,7 +24,7 @@ class SessionsController < ApplicationController
               redirect_to "/sessions/new"
           else
               session[:user_id] = user.id
-              redirect_to "/riders/#{user.id}"
+              redirect_to "/riders/#{user.id}/index"
           end
       else
           flash[:errors] = ["The user does not exist, please register."]

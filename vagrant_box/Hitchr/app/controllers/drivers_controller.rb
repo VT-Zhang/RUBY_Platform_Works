@@ -1,4 +1,8 @@
 class DriversController < ApplicationController
+  def index
+      render "/drivers/index.html.erb"
+  end
+
   def create
       driver = Driver.new(first_name: params[:driver_first_name], last_name: params[:driver_last_name], email: params[:driver_email], gender: params[:driver_gender], birthday: params[:driver_birthday], password: params[:driver_password], password_confirmation: params[:driver_password_confirmation])
       if driver.valid?
@@ -12,6 +16,7 @@ class DriversController < ApplicationController
   end
 
   def show
+      @driver = Driver.find(params[:id])
       render "/drivers/show.html.erb"
   end
 

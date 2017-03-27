@@ -1,5 +1,5 @@
 <h2>Update The Trip Info</h2>
-<a href="/drivers/<%=current_driver.id%>">Go Back to Driver's Dashboard</a>
+<a href="/drivers/<%=current_driver.id%>/index">Go Back to Driver's Dashboard</a>
 <form action="/trips/<%=@trip.id%>" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <input type="hidden" name="_method" value="patch" />

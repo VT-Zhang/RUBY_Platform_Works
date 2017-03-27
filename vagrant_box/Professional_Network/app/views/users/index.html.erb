@@ -1,0 +1,52 @@
+<style>
+    #des{
+        height:100px;
+        width:250px;
+        border: 1px solid black;
+        padding-left: 10px;
+    }
+    #network{
+        height:150px;
+        width:250px;
+        border: 1px solid black;
+        padding-left: 10px;
+        overflow-y:scroll;
+    }
+</style>
+<a href="/users/showall">All Users</a>
+<h2>Hi, <%=current_user.name%>!</h2>
+<br />
+<h3>Here is your profile description:</h3>
+<div id="des">
+    <p><%=current_user.description%></p>
+</div>
+<br />
+<h3>Your Professional Network:</h3>
+<div id="network">
+    <% if @networks %>
+    <% @networks.each do |network| %>
+    <p>
+        <a href="/users/<%=network.user_id%>/show/"><%=network.user.name%></a> | <a href="/networks/<%=network.user_id%>/destroy" data-method="delete">Delete</a>
+    </p>
+    <%end%>
+    <%end%>
+</div>
+<br />
+<h3>Invitation:</h3>
+<h4>The following people asked you to join their network:</h4>
+<div id="invitation">
+    <table>
+        <tr>
+           <th>Name</th>
+           <th>Action</th>
+       </tr>
+        <% if @invitations %>
+        <% @invitations.each do |invitation| %>
+        <tr>
+           <th><a href="/users/<%=invitation.user_id%>/show"><%=invitation.user.name%></a></th>
+           <th><a href="/networks/<%=invitation.user_id%>/create/<%=invitation.id%>" data-method="post">Accept Invite</a> | <a href="/invitations/<%=invitation.user_id%>/destroy" data-method="delete">Ignore</a></th>
+       </tr>
+       <% end %>
+       <% end %>
+    </table>
+</div>

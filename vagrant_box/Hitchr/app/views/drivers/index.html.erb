@@ -1,0 +1,60 @@
+<h2><%= current_driver.first_name %>, welcome to the Driver's Dashboard.</h2>
+
+<a href="/trips/new">Post a new trip</a> |
+<a href="/cars/new">Add a new vehicle</a>
+
+<% if current_driver.cars %>
+<h2>You currently have <%=current_driver.cars.count%> car(s) on file.</h2>
+<table>
+    <tr>
+        <th>Year</th>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Color</th>
+        <th>Mileage</th>
+    </tr>
+<% current_driver.cars.each do |car| %>
+    <tr>
+        <td><%=car.year%></td>
+        <td><%=car.make%></td>
+        <td><%=car.model%></td>
+        <td><%=car.color%></td>
+        <td><%=car.mileage%></td>
+    </tr>
+<%end%>
+<% else %>
+<h2>You can add a new vehicle to your profile.</h2>
+<%end%>
+</table>
+
+<% if current_driver.trips %>
+<h2>You have <%=current_driver.trips.count%> pending trip(s)</h2>
+<%end%>
+<table>
+  <tr>
+    <th>From</th>
+    <th>To</th>
+    <th>Date</th>
+    <th>Price Per Rider</th>
+    <th>Riders</th>
+    <th>Action</th>
+  </tr>
+ <% if current_driver.trips %>
+ <% current_driver.trips.each do |trip| %>
+  <tr>
+      <td><%=trip.a_city%>, <%=trip.a_state%> <%=trip.a_zipcode%></td>
+      <td><%=trip.b_city%>, <%=trip.b_state%> <%=trip.b_zipcode%></td>
+      <td><%=trip.date%></td>
+      <td>$<%=trip.price%></td>
+      <% if current_driver.riders %>
+      <td><% current_driver.riders.each do |rider| %>
+          <a href="/riders/<%=rider.id%>/show"><%=rider.first_name%> <%=rider.last_name%></a>
+      </td>
+      <%end%>
+      <%end%>
+      <td><a href="/trips/<%=trip.id%>/edit">Edit</a> | <a href="/trips/<%=trip.id%>" data-method="delete">Delete</a> </td>
+
+  </tr>
+  <%end%>
+  <%end%>
+</table>

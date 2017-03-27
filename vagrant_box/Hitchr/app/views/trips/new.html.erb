@@ -1,5 +1,5 @@
 <h2>Add A New Trip</h2>
-<a href="/drivers/<%=current_driver.id%>">Go Back to Driver's Dashboard</a>
+<a href="/drivers/<%=current_driver.id%>/index">Go Back to Driver's Dashboard</a>
 <form action="/trips/create" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <p>Starting City: <input type="text" name="a_city" />

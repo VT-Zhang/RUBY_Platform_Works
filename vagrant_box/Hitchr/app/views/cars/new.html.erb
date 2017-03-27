@@ -1,19 +1,19 @@
 <h2>Add A New Car</h2>
-<a href="/drivers/<%=current_driver.id%>">Go Back to Driver's Dashboard</a>
+<a href="/drivers/<%=current_driver.id%>/index">Go Back to Driver's Dashboard</a>
 <form action="/cars/create" method="post">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <p>Make: <input type="text" name="make" /></p>
     <p>Model: <input type="text" name="model" /></p>
     <p>Color: <select name="color">
                <option value="" disabled selected>Color</option>
-               <option value="white">White</option>
-               <option value="black">Black</option>
-               <option value="silver">Silver</option>
-               <option value="blue">Blue</option>
-               <option value="green">Green</option>
-               <option value="yellow">Yellow</option>
-               <option value="red">Red</option>
-               <option value="tan">Tan</option>
+               <option value="White">White</option>
+               <option value="Black">Black</option>
+               <option value="Silver">Silver</option>
+               <option value="Blue">Blue</option>
+               <option value="Green">Green</option>
+               <option value="Yellow">Yellow</option>
+               <option value="Red">Red</option>
+               <option value="Tan">Tan</option>
                </select> </p>
     <p>Year: <select name="year">
               <option value="" disabled selected>Year</option>

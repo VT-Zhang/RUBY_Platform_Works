@@ -1,4 +1,7 @@
 class RidersController < ApplicationController
+  def index
+      @trips = Trip.all
+  end
   def create
       rider = Rider.new(first_name: params[:rider_first_name], last_name: params[:rider_last_name], email: params[:rider_email], gender: params[:rider_gender], birthday: params[:rider_birthday], password: params[:rider_password], password_confirmation: params[:rider_password_confirmation])
       if rider.valid?

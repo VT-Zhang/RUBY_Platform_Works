@@ -1,8 +1,6 @@
 class Trip < ActiveRecord::Base
   belongs_to :driver
   belongs_to :rider
-  has_many :riders
-  has_one :driver
 
   validates :a_city, :a_state, :a_zipcode, :b_city, :b_state, :b_zipcode, :date, :price, presence:true
   validates :a_zipcode, :b_zipcode, numericality: true, length: { is: 5 }

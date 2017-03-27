@@ -1,0 +1,25 @@
+<h2><%= current_rider.first_name %>, welcome to the Rider's Dashboard.</h2>
+
+<h2>These are all trips available:</h2>
+<table>
+  <tr>
+    <th>From</th>
+    <th>To</th>
+    <th>Date</th>
+    <th>Price Per Rider</th>
+    <th>Driver</th>
+    <th>Action</th>
+  </tr>
+ <% if @trips %>
+ <% @trips.each do |trip| %>
+  <tr>
+      <td><%=trip.a_city%>, <%=trip.a_state%> <%=trip.a_zipcode%></td>
+      <td><%=trip.b_city%>, <%=trip.b_state%> <%=trip.b_zipcode%></td>
+      <td><%=trip.date%></td>
+      <td>$<%=trip.price%></td>
+      <td><a href="/drivers/<%=trip.driver_id%>/show"><%=trip.driver.first_name%> <%=trip.driver.last_name%></a></td>
+      <td><a href="/trips/<%=trip.id%>/update">Join</a></td>
+  </tr>
+  <%end%>
+  <%end%>
+</table>

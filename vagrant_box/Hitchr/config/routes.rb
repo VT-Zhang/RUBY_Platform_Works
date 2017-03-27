@@ -6,10 +6,12 @@ Rails.application.routes.draw do
   delete "/sessions/destroy" => "sessions#destroy"
 
   post "/drivers/create"     => "drivers#create"
-  get "/drivers/:id"         => "drivers#show"
+  get "/drivers/:id/show"    => "drivers#show"
+  get "/drivers/:id/index"   => "drivers#index"
 
   post "/riders/create"      => "riders#create"
-  get "/riders/:id"          => "riders#show"
+  get "/riders/:id/index"    => "riders#index"
+  get "/riders/:id/show"     => "riders#show"
 
   get "/trips/new"           => "trips#new"
   post "/trips/create"       => "trips#create"
