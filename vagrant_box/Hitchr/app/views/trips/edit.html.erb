@@ -1,0 +1,117 @@
+<h2>Update The Trip Info</h2>
+<a href="/drivers/<%=current_driver.id%>">Go Back to Driver's Dashboard</a>
+<form action="/trips/<%=@trip.id%>" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="_method" value="patch" />
+    <p>Starting City: <input type="text" name="a_city" value="<%=@trip.a_city%>"/>
+       State: <select name="a_state">
+               <option value="AL"<% if @trip.a_state == "AL"%> selected <% end %>>Alabama</option>
+               <option value="AK"<% if @trip.a_state == "AK"%> selected <% end %>>Alaska</option>
+               <option value="AZ"<% if @trip.a_state == "AZ"%> selected <% end %>>Arizona</option>
+               <option value="AR"<% if @trip.a_state == "AR"%> selected <% end %>>Arkansas</option>
+               <option value="CA"<% if @trip.a_state == "CA"%> selected <% end %>>California</option>
+               <option value="CO"<% if @trip.a_state == "CO"%> selected <% end %>>Colorado</option>
+               <option value="CT"<% if @trip.a_state == "CT"%> selected <% end %>>Connecticut</option>
+               <option value="DC"<% if @trip.a_state == "DC"%> selected <% end %>>District of Columbia</option>
+               <option value="DE"<% if @trip.a_state == "DE"%> selected <% end %>>Delaware</option>
+               <option value="FL"<% if @trip.a_state == "FL"%> selected <% end %>>Florida</option>
+               <option value="GA"<% if @trip.a_state == "GA"%> selected <% end %>>Georgia</option>
+               <option value="HI"<% if @trip.a_state == "HI"%> selected <% end %>>Hawaii</option>
+               <option value="ID"<% if @trip.a_state == "ID"%> selected <% end %>>Idaho</option>
+               <option value="IL"<% if @trip.a_state == "IL"%> selected <% end %>>Illinois</option>
+               <option value="IN"<% if @trip.a_state == "IN"%> selected <% end %>>Indianna</option>
+               <option value="IA"<% if @trip.a_state == "IA"%> selected <% end %>>Iowa</option>
+               <option value="KS"<% if @trip.a_state == "KS"%> selected <% end %>>Kansas</option>
+               <option value="KY"<% if @trip.a_state == "KY"%> selected <% end %>>Kentucky</option>
+               <option value="LA"<% if @trip.a_state == "LA"%> selected <% end %>>Louisiana</option>
+               <option value="ME"<% if @trip.a_state == "ME"%> selected <% end %>>Maine</option>
+               <option value="MD"<% if @trip.a_state == "MD"%> selected <% end %>>Maryland</option>
+               <option value="MA"<% if @trip.a_state == "MA"%> selected <% end %>>Massachusetts</option>
+               <option value="MI"<% if @trip.a_state == "MI"%> selected <% end %>>Michigan</option>
+               <option value="MN"<% if @trip.a_state == "MN"%> selected <% end %>>Minnesota</option>
+               <option value="MS"<% if @trip.a_state == "MS"%> selected <% end %>>Mississippi</option>
+               <option value="MO"<% if @trip.a_state == "MO"%> selected <% end %>>Missouri</option>
+               <option value="MT"<% if @trip.a_state == "MT"%> selected <% end %>>Montana</option>
+               <option value="NE"<% if @trip.a_state == "NE"%> selected <% end %>>Nebraska</option>
+               <option value="NV"<% if @trip.a_state == "NV"%> selected <% end %>>Neveda</option>
+               <option value="NH"<% if @trip.a_state == "NH"%> selected <% end %>>New Hampshire</option>
+               <option value="NJ"<% if @trip.a_state == "NJ"%> selected <% end %>>New Jersey</option>
+               <option value="NM"<% if @trip.a_state == "NM"%> selected <% end %>>New Mexico</option>
+               <option value="NY"<% if @trip.a_state == "NY"%> selected <% end %>>New York</option>
+               <option value="NC"<% if @trip.a_state == "NC"%> selected <% end %>>North Carolina</option>
+               <option value="ND"<% if @trip.a_state == "ND"%> selected <% end %>>North Dakota</option>
+               <option value="OH"<% if @trip.a_state == "OH"%> selected <% end %>>Ohio</option>
+               <option value="OK"<% if @trip.a_state == "OK"%> selected <% end %>>Oklahoma</option>
+               <option value="OR"<% if @trip.a_state == "OR"%> selected <% end %>>Oregon</option>
+               <option value="PA"<% if @trip.a_state == "PA"%> selected <% end %>>Pennsylvania</option>
+               <option value="RI"<% if @trip.a_state == "RI"%> selected <% end %>>Rhode Island</option>
+               <option value="SC"<% if @trip.a_state == "SC"%> selected <% end %>>South Carolina</option>
+               <option value="SD"<% if @trip.a_state == "SD"%> selected <% end %>>South Dakota</option>
+               <option value="TN"<% if @trip.a_state == "TN"%> selected <% end %>>Tennessee</option>
+               <option value="TX"<% if @trip.a_state == "TX"%> selected <% end %>>Texas</option>
+               <option value="UT"<% if @trip.a_state == "UT"%> selected <% end %>>Utah</option>
+               <option value="VT"<% if @trip.a_state == "VT"%> selected <% end %>>Vermont</option>
+               <option value="VA"<% if @trip.a_state == "VA"%> selected <% end %>>Virginia</option>
+               <option value="WA"<% if @trip.a_state == "WA"%> selected <% end %>>Washington</option>
+               <option value="WV"<% if @trip.a_state == "WV"%> selected <% end %>>West Virginia</option>
+               <option value="WI"<% if @trip.a_state == "WI"%> selected <% end %>>Wisconsin</option>
+               <option value="WY"<% if @trip.a_state == "WY"%> selected <% end %>>Wyoming</option>
+           </select> Zip: <input type="text" name="a_zipcode" value="<%=@trip.a_zipcode%>"/></p>
+   <p>Destination City: <input type="text" name="b_city" value="<%=@trip.b_city%>"/>
+      State: <select name="b_state">
+          <option value="AL"<% if @trip.b_state == "AL"%> selected <% end %>>Alabama</option>
+          <option value="AK"<% if @trip.b_state == "AK"%> selected <% end %>>Alaska</option>
+          <option value="AZ"<% if @trip.b_state == "AZ"%> selected <% end %>>Arizona</option>
+          <option value="AR"<% if @trip.b_state == "AR"%> selected <% end %>>Arkansas</option>
+          <option value="CA"<% if @trip.b_state == "CA"%> selected <% end %>>California</option>
+          <option value="CO"<% if @trip.b_state == "CO"%> selected <% end %>>Colorado</option>
+          <option value="CT"<% if @trip.b_state == "CT"%> selected <% end %>>Connecticut</option>
+          <option value="DC"<% if @trip.b_state == "DC"%> selected <% end %>>District of Columbia</option>
+          <option value="DE"<% if @trip.b_state == "DE"%> selected <% end %>>Delaware</option>
+          <option value="FL"<% if @trip.b_state == "FL"%> selected <% end %>>Florida</option>
+          <option value="GA"<% if @trip.b_state == "GA"%> selected <% end %>>Georgia</option>
+          <option value="HI"<% if @trip.b_state == "HI"%> selected <% end %>>Hawaii</option>
+          <option value="ID"<% if @trip.b_state == "ID"%> selected <% end %>>Idaho</option>
+          <option value="IL"<% if @trip.b_state == "IL"%> selected <% end %>>Illinois</option>
+          <option value="IN"<% if @trip.b_state == "IN"%> selected <% end %>>Indianna</option>
+          <option value="IA"<% if @trip.b_state == "IA"%> selected <% end %>>Iowa</option>
+          <option value="KS"<% if @trip.b_state == "KS"%> selected <% end %>>Kansas</option>
+          <option value="KY"<% if @trip.b_state == "KY"%> selected <% end %>>Kentucky</option>
+          <option value="LA"<% if @trip.b_state == "LA"%> selected <% end %>>Louisiana</option>
+          <option value="ME"<% if @trip.b_state == "ME"%> selected <% end %>>Maine</option>
+          <option value="MD"<% if @trip.b_state == "MD"%> selected <% end %>>Maryland</option>
+          <option value="MA"<% if @trip.b_state == "MA"%> selected <% end %>>Massachusetts</option>
+          <option value="MI"<% if @trip.b_state == "MI"%> selected <% end %>>Michigan</option>
+          <option value="MN"<% if @trip.b_state == "MN"%> selected <% end %>>Minnesota</option>
+          <option value="MS"<% if @trip.b_state == "MS"%> selected <% end %>>Mississippi</option>
+          <option value="MO"<% if @trip.b_state == "MO"%> selected <% end %>>Missouri</option>
+          <option value="MT"<% if @trip.b_state == "MT"%> selected <% end %>>Montana</option>
+          <option value="NE"<% if @trip.b_state == "NE"%> selected <% end %>>Nebraska</option>
+          <option value="NV"<% if @trip.b_state == "NV"%> selected <% end %>>Neveda</option>
+          <option value="NH"<% if @trip.b_state == "NH"%> selected <% end %>>New Hampshire</option>
+          <option value="NJ"<% if @trip.b_state == "NJ"%> selected <% end %>>New Jersey</option>
+          <option value="NM"<% if @trip.b_state == "NM"%> selected <% end %>>New Mexico</option>
+          <option value="NY"<% if @trip.b_state == "NY"%> selected <% end %>>New York</option>
+          <option value="NC"<% if @trip.b_state == "NC"%> selected <% end %>>North Carolina</option>
+          <option value="ND"<% if @trip.b_state == "ND"%> selected <% end %>>North Dakota</option>
+          <option value="OH"<% if @trip.b_state == "OH"%> selected <% end %>>Ohio</option>
+          <option value="OK"<% if @trip.b_state == "OK"%> selected <% end %>>Oklahoma</option>
+          <option value="OR"<% if @trip.b_state == "OR"%> selected <% end %>>Oregon</option>
+          <option value="PA"<% if @trip.b_state == "PA"%> selected <% end %>>Pennsylvania</option>
+          <option value="RI"<% if @trip.b_state == "RI"%> selected <% end %>>Rhode Island</option>
+          <option value="SC"<% if @trip.b_state == "SC"%> selected <% end %>>South Carolina</option>
+          <option value="SD"<% if @trip.b_state == "SD"%> selected <% end %>>South Dakota</option>
+          <option value="TN"<% if @trip.b_state == "TN"%> selected <% end %>>Tennessee</option>
+          <option value="TX"<% if @trip.b_state == "TX"%> selected <% end %>>Texas</option>
+          <option value="UT"<% if @trip.b_state == "UT"%> selected <% end %>>Utah</option>
+          <option value="VT"<% if @trip.b_state == "VT"%> selected <% end %>>Vermont</option>
+          <option value="VA"<% if @trip.b_state == "VA"%> selected <% end %>>Virginia</option>
+          <option value="WA"<% if @trip.b_state == "WA"%> selected <% end %>>Washington</option>
+          <option value="WV"<% if @trip.b_state == "WV"%> selected <% end %>>West Virginia</option>
+          <option value="WI"<% if @trip.b_state == "WI"%> selected <% end %>>Wisconsin</option>
+          <option value="WY"<% if @trip.b_state == "WY"%> selected <% end %>>Wyoming</option>
+          </select> Zip: <input type="text" name="b_zipcode" value="<%=@trip.b_zipcode%>"/></p>
+    <p>Leaving Date: <input type="date" name="date" value="<%=@trip.date%>" />
+    <p>Price Per Rider: $<input type="text" name="price" value="<%=@trip.price%>"/>
+    <input type="submit" value="Update the trip" />
+</form>

@@ -1,0 +1,68 @@
+<style>
+#title{
+    text-align: center;
+}
+ #wrapper{
+    height:500px;
+    width: 800px;
+    border-style: 1px black;
+    border-style: solid;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+ }
+
+#left{
+    width:300px;
+    margin-left: 100px;
+}
+
+#right{
+    width:300px;
+}
+</style>
+
+<h1 id="title">Welcome to Hitchr!</h1>
+<div id="wrapper">
+    <div id="left">
+        <h2>Driver</h2>
+        <form action="/drivers/create" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <p>First Name: <input type="text" name="driver_first_name" /></p>
+            <p>Last Name: <input type="text" name="driver_last_name" /></p>
+            <p>Email: <input type="text" name="driver_email" /></p>
+            <p>Gender: <select name="driver_gender">
+                       <option value="" disabled selected>Gender</option>
+                       <option value="Guy">Guy</option>
+                       <option value="Gal">Gal</option>
+                       </select> </p>
+            <p>Birthday: <input type="date" name="driver_birthday" value="<%= Date.today %>"/></p>
+            <p>Password: <input type="password" name="driver_password" /></p>
+            <p>Confirm PW: <input type="password" name="driver_password_confirmation" /></p>
+            <input type="submit" value="Register" id="driver_register" />
+        </form>
+        <br />
+        <a href="/sessions/new">Already a member?</a>
+    </div>
+
+    <div id="right">
+        <h2>Rider</h2>
+        <form action="/riders/create" method="post">
+            <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+            <p>First Name: <input type="text" name="rider_first_name" /></p>
+            <p>Last Name: <input type="text" name="rider_last_name" /></p>
+            <p>Email: <input type="text" name="rider_email" /></p>
+            <p>Gender: <select name="rider_gender">
+                       <option value="" disabled selected>Gender</option>
+                       <option value="Guy">Guy</option>
+                       <option value="Gal">Gal</option>
+                       </select> </p>
+            <p>Birthday: <input type="date" name="rider_birthday" value="<%= Date.today %>"/></p>
+            <p>Password: <input type="password" name="rider_password" /></p>
+            <p>Confirm PW: <input type="password" name="rider_password_confirmation" /></p>
+            <input type="submit" value="Register" id="rider_register" />
+        </form>
+        <br />
+        <a href="/sessions/new">Already a member?</a>
+    </div>
+</div>
