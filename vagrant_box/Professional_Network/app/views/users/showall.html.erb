@@ -5,14 +5,14 @@
        <th>Name</th>
        <th>Action</th>
    </tr>
-    <% if @users %>
     <% @users.each do |user| %>
-    <% if user != current_user%>
-    <tr>
-       <th><a href="/users/<%=user.id%>/show"><%=user.name%></a></th>
-       <th><a href="/invitations/<%=user.id%>/create" data-method="post">Connect</a></th>
+   <% if @network.friend_id != current_user.id || @invitations.inviter_id != current_user.id %>
+   <% if user != current_user %>
+   <tr>
+      <td><a href="/users/<%=user.id%>/show"><%=user.name%></a></td>
+      <td><a href="/invitations/<%=user.id%>/create" data-method="post">Connect</a></td>
+      <% end %>
+      <% end %>
    </tr>
-   <% end %>
-   <% end %>
    <% end %>
 </table>

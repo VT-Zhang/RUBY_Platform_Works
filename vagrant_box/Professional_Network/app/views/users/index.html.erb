@@ -26,7 +26,7 @@
     <% if @networks %>
     <% @networks.each do |network| %>
     <p>
-        <a href="/users/<%=network.user_id%>/show/"><%=network.user.name%></a> | <a href="/networks/<%=network.user_id%>/destroy" data-method="delete">Delete</a>
+        <a href="/users/<%=network.friend_id%>/show/"><%=network.friend.name%></a> | <a href="/networks/<%=network.id%>/destroy" data-method="delete">Delete</a>
     </p>
     <%end%>
     <%end%>
@@ -43,8 +43,8 @@
         <% if @invitations %>
         <% @invitations.each do |invitation| %>
         <tr>
-           <th><a href="/users/<%=invitation.user_id%>/show"><%=invitation.user.name%></a></th>
-           <th><a href="/networks/<%=invitation.user_id%>/create/<%=invitation.id%>" data-method="post">Accept Invite</a> | <a href="/invitations/<%=invitation.user_id%>/destroy" data-method="delete">Ignore</a></th>
+           <th><a href="/users/<%=invitation.inviter_id%>/show"><%=invitation.inviter.name%></a></th>
+           <th><a href="/networks/<%=invitation.inviter_id%>/create/<%=invitation.id%>" data-method="post">Accept Invite</a> | <a href="/invitations/<%=invitation.id%>/destroy" data-method="delete">Ignore</a></th>
        </tr>
        <% end %>
        <% end %>

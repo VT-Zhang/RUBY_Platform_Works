@@ -1,9 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
-  has_many :networks, dependent: :destroy
-  has_many :invitations, dependent: :destroy
-  has_many :friends, through: :networks, source: :user
-  has_many :inviters, through: :invitations, source: :user
+  has_many :friends, :foreign_key => "user_id", :class_name => "Network"
+  has_many :inviters, :foreign_key => "user_id", :class_name => "Invitation"
 
   EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]+)\z/i
   validates :name, :email, :description, :password, :password_confirmation, presence: true, :on => :create

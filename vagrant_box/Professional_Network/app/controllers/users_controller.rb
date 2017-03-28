@@ -2,9 +2,8 @@ class UsersController < ApplicationController
     before_action :require_login, except: [:create]
 
     def index
-        @users = User.all
-        @networks = Network.where(friend_id: current_user.id)
-        @invitations = Invitation.where(inviter_id: current_user.id)
+        @networks = Network.where(user_id: current_user.id)
+        @invitations = Invitation.where(user_id: current_user.id)
         render "/users/index.html.erb"
     end
 
@@ -20,9 +19,6 @@ class UsersController < ApplicationController
         end
     end
 
-  def edit
-  end
-
   def show
       @user = User.find(params[:id])
       render "/users/show.html.erb"
@@ -30,7 +26,8 @@ class UsersController < ApplicationController
 
   def showall
       @users = User.all
-      @networks = Network.where.not(friend_id: current_user.id)
+      @network = Network.find_by(user: current_user)
+      @invitation = Invitation.find_by(user: current_user)
       render "/users/showall.html.erb"
   end
 end
